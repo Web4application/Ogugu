@@ -8,8 +8,10 @@ cd embedded-app-sdk-examples/sdk-playground
 pnpm dev
 npm install @discord/embedded-app-sdk
 npm i xyber-ai-chat
-
+npm install
+npm run dev
 git clone https://github.com/f5devcentral/vscode-f5.git
 cd vscode-f5-fast/
 npm install
 code .
+gh repo clone discord/embedded-app-sdk-examples
