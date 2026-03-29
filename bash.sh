@@ -17,7 +17,8 @@ code .
 gh repo clone discord/embedded-app-sdk-examples
 git clone https://github.com/openclaw/openclaw.git
 cd openclaw
-
+# Install vLLM from pip:
+pip install vllm
 pnpm install
 pnpm ui:build # auto-installs UI deps on first run
 pnpm build
