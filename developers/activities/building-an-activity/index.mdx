@@ -25,12 +25,52 @@ Welcome! Here’s a list of all interactive activities you can run in your Disco
 
 Welcome! Navigate an activity to see setup instructions and examples.
 
-[Go to Game Activity](game-activity.md) | [Go to Music Activity](music-activity.md) | [Back to Commands](../commands/index.md)
+[Go to Game Activity](game-activity.md)
+[Go to Music Activity](music-activity.md) | [Back to Commands](../commands/index.md)
 [← Previous Activity](trivia-activity.md) | [Next Activity →](drawing-art.md) | [Back to Activities](index.md)
 import { Link } from '@docusaurus/router';
 
-# Activities Overview
-```ini
+[Activities Overview](index.mdx)
 {['Game', 'Music', 'Watch Together', 'Study / Focus', 'Trivia', 'Drawing / Art', 'Voice Chat Games', 'Polls & Votes', 'Coding / Dev', 'Custom Bot Games', 'Podcast / Radio'].map((act, i) => (
-  <li key={i}><Link to={`./${act.toLowerCase().replace(/ /g, '-')}`}>{act} Activity</Link></li>
+<li key={i}>
+<Link to={`./${act.toLowerCase().replace(/ /g, '-')}`}>{act} Activity</Link></li>
 ))}
+
+
+---
+
+**[Sidebar Configuration](sidebars.js)**
+```js
+module.exports = {
+  sidebar: [
+    {
+      type: 'category',
+      label: 'Activities',
+      items: [
+        'activities/index',
+        'activities/game-activity',
+        'activities/music-activity',
+        'activities/watch-together',
+        'activities/study-focus',
+        'activities/trivia-activity',
+        'activities/drawing-art',
+        'activities/voice-chat-games',
+        'activities/polls-votes',
+        'activities/coding-dev',
+        'activities/custom-bot-games',
+        'activities/podcast-radio',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Commands',
+      items: [
+        'commands/index',
+        'commands/moderation',
+        'commands/utility',
+        'commands/fun',
+      ],
+    },
+    'README',
+  ],
+};
