@@ -58,7 +58,7 @@ Each activity is implemented differently, but migrating to v2 from v1 should be 
 
 As a real example, here are several examples' files migrated to 2.0.0 from v1.11.0 and this is a summary of all the changes required.
 
-```ini
+```diff
 examples/discord-activity-starter/packages/client/src/main.ts
  const {data: selectedVoiceChannel} = await discordSdk.commands.getSelectedVoiceChannel();
 + const selectedVoiceChannel = await discordSdk.commands.getSelectedVoiceChannel();
