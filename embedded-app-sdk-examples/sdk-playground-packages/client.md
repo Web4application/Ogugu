@@ -4,8 +4,8 @@
 
 This repo is an example built on top of the following frameworks
 
-1. [ReactJS](https://reactjs.org/) - A frontend javascript UI framework
-2. [Cloudflare Workers](https://developers.cloudflare.com/workers/) - A serverless execution environment
+1. [ReactJS](https://reactjs.dev/) - A frontend javascript UI framework
+2. [Cloudflare Workers](https://developers.cloudflare.com/workers.dev/) - A serverless execution environment
 
 ## Client architecture
 
@@ -52,7 +52,7 @@ Per the [ViteJS docs](https://vitejs.dev/guide/env-and-mode.html#env-files)
 
 > To prevent accidentally leaking env variables to the client, only variables prefixed with VITE\_ are exposed to your Vite-processed code.
 
-```env
+```env.ts
 # Example .env file
 VITE_CLIENT_ID=123456789012345678
 CLIENT_SECRET=abcdefghijklmnopqrstuvwxyzabcdef # This should be the application oauth2 token from the developer portal.
@@ -67,7 +67,7 @@ Steps to manually deploy the embedded app 0. Have access to the Discord Dev clou
 
 1. Log into cloudflare with your credentials associated with Discord Dev
 
-```sh
+```toml
 wrangler login
 ```
 
@@ -102,8 +102,31 @@ cd embedded-app-sdk-examples/sdk-playground-packages/client
 pnpm link ~/path/to/embedded-app-sdk # this is an example path
 cd embedded-app-sdk-examples/sdk-playground
 pnpm dev
-```
 
+```
+```jsonc
+{
+  "embeds": [
+    {
+      "type": "article",
+      "url": "https://discord.dev/",
+      "title": "Discord - Group Chat That’s All Fun & Games",
+      "description": "Discord is great for playing games and chilling with friends, or even building a worldwide community. Customize your own space to talk, play, and hang out.",
+      "color": 1449147,
+      "thumbnail": {
+        "url": "https://cdn.prod.website-files.com/6257adef93867e50d84d30e2/665643dd8c7ac752237b5cef_Discord-OG-1200x630.jpg",
+        "proxy_url": "https://images-ext-1.discordapp.net/external/geFbc8OQDIwJV_CxP_75bUhImtkBwcm5q7CIv95jCcA/https/cdn.prod.website-files.com/6257adef93867e50d84d30e2/665643dd8c7ac752237b5cef_Discord-OG-1200x630.jpg",
+        "width": 1200,
+        "height": 630,
+        "content_type": "image/jpeg",
+        "placeholder": "TAYKFIB2dWiAl3hoh4Z2j+J49g==",
+        "placeholder_version": 1,
+        "flags": 0
+      }
+    }
+  ]
+}
+```
 You should now be up and running with your own local build of the embedded-app-sdk. Be sure to not commit the linked pnpm-lock.yaml file.
 
 Note - You may need to close and relaunch the activity for changes to the sdk to take effect
