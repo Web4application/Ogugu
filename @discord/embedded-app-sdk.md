@@ -1,4 +1,5 @@
-# @discord/embedded-app-sdk
+## @discord/embedded-app-sdk
+
 
 <p align="center">
   <img src="/assets/discord-embedded-apps.svg" alt="Discord Embedded App SDK" />
