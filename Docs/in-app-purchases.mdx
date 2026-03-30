@@ -28,14 +28,14 @@ An Entitlement is the result of a successful purchase. Semantically, an Entitlem
 
 ## First Things First
 
-Before thinking about monetizing your application, [make sure it's already configured as an Embedded Application](../setting-up-your-discord-application.md#marking-your-application-as-embedded).
+Before thinking about monetizing your application, [make sure it's already configured as an Embedded Application](../setting-up-your-discord-application.md#marking-your-application-as-embedded.html).
 
 ## Payout Registration
 
 The next step towards monetizing your Application is to register your Payout Settings for your Application Development team. **In order for your Application to be eligible for IAP, your Application must be owned by a Team and not an individual.**
 
 To register for payout, the owner of the team must log in to the developer portal, select the team they want to monetize, and select the "Payout Settings" option from the sidebar. From the Payout Settings page there is a button to "Get Started". Clicking here will redirect the team owner to Stripe Connect, where the Team Owner can register the official legal information necessary for payout.
-![payout-registration](/assets/payout-registration.png)
+[![payout-registration](/assets/payout-registration.png)]
 
 ## Contact Discord for `EMBEDDED_IAP` flag
 
@@ -61,7 +61,7 @@ SKUs are the "menu items" of your premium store, so being familiar with how they
 
 SKU creation is handled entirely within the developer portal for the Application. Once your Application has been marked as `EMBEDDED_IAP`, a sidebar menu item "SKU Management" will appear under the "Monetization" Section.
 
-![sku-mgmt-sidebar](/assets/sku-mgmt-sidebar.png)
+[![sku-mgmt-sidebar](/assets/sku-mgmt-sidebar.png)]
 
 From this SKU Management Page, all SKUs for the Application wil be listed. If none exist, the table will be empty. To create a SKU, simply click "Create SKU", select the type of SKU you wish to create ("Durable", "Consumable"), supply a name in the modal, and select Confirm. Congratulations, you have created a SKU!
 
@@ -69,7 +69,7 @@ From this SKU Management Page, all SKUs for the Application wil be listed. If no
 
 Once the SKU is created, you should select a price. The "Price" dropdown will give you an option to select a price tier.
 
-![publish-sku](/assets/publish-sku.png)
+[![publish-sku](/assets/publish-sku.png)]
 
 The last step of SKU creation is publishing. Methods for listing SKUs such as `RPCCommands.GET_SKUS` will not return unpublished SKUs, so this serves as an availability toggle for Consumable and Durable SKUs. SKUs can be unpublished at any time.
 
@@ -93,7 +93,7 @@ console.log(`SKUs: ${skus}`);
 
 This HTTP API returns SKUs for an application. This API requires using the Bot token for your application as authorization. This API should be called from the application backend servers, and used as the source of truth for SKUs.
 
-```
+```bash
 curl https://discord.com/api/v6/applications/461618159171141643/skus \
 -H "Authorization: Bot <token>" \
 -H "Accept: application/json"
@@ -142,7 +142,7 @@ Some reminders and best practices when mapping SKUs to products:
 
 ### Listing Prices
 
-Our methods for listing SKUs automatically localize currency and prices. This means `sku.price` has both a number `amount` attribute and a string `currency` attribute. Properly rendering the price expected units depending on currency can be challenging given the large number of currencies. DiscordSDK provides a utility to make this easier.
+Our methods for listing SKUs automatically localize currency and prices. This means `sku.price` has both a number `amount` attribute and a string `currency` attribute. Properly rendering the price expected units depending on currency can be challenging given the large number of currencies. DiscordSDK provides a utility to `examples/sdk-playground/packages/server/src/handlers/iapHandler.ts`make this easier.
 
 ```ts
 import {PriceUtils} from '@discord/embedded-app-sdk';
@@ -172,7 +172,7 @@ This HTTP API returns entitlements for a given user. You can use this on your ap
 | `after?`         | snowflake                         | retrieve entitlements after this time                 |
 | `limit?`         | int                               | number of entitlements to return, 1-100, default 100  |
 
-```
+```bash
 curl https://discord.com/api/v6/applications/461618159171141643/entitlements?user_id=53908232506183680&sku_ids=53908232599983680&with_payments=true&limit=1 \
 -H "Authorization: Bot <token>" \
 -H "Accept: application/json"
@@ -209,7 +209,7 @@ Consuming Entitlements is perfect for SKUs that are meant to be temporary or eph
 
 Example
 
-```
+```bash
 curl -X POST https://discord.com/api/v6/applications/461618159171141643/entitlements/53908232506183999/consume \
 -H "Authorization: Bot <token>" \
 -H "Accept: application/json"
@@ -228,7 +228,7 @@ Entitlements should be filtered to:
 
 Example Entitlement filtering:
 
-```js
+```jsx
 // Entitlement shape
 interface Entitlement {
   user_id: string;
@@ -286,7 +286,7 @@ This command only initiates the purchase flow; subscribe to `ENTITLEMENT_CREATE`
 
 This event will fire when an Entitlement is created, most likely as the result of a successful purchase. When this event is received the application should perform an entitlements check on it's server.
 
-```js
+```jsx
 import {DiscordSDK} from '@discord/embedded-app-sdk';
 const discordSdk = new DiscordSDK(clientId);
 await discordSdk.ready();
