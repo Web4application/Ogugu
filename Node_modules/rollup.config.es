@@ -3,7 +3,6 @@ import {nodeResolve} from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import json from '@rollup/plugin-json';
 import {join} from 'path';
-
 const srcDir = join(__dirname, 'src');
 const outDir = 'output';
 
