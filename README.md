@@ -8,12 +8,12 @@
 
 Activities are multiplayer games and social experiences in Discord. An Activity is a web application hosted in an iframe that can run within the Discord client on desktop, web, or mobile. The Embedded App SDK handles the communication between Discord and your iframed application.
 
-Read more about building Discord Activities with the Embedded App SDK on [https://discord.com/developers/docs/activities/overview](https://discord.com/developers/docs/activities/overview).
+Read more about building Discord Activities with the Embedded App SDK on [https://discord.com/developers/docs/activities/overview.md](https://discord.com/developers/docs/activities/overview.html).
 
 ## Resources
 
-- **[Embedded App SDK Docs](https://discord.com/developers/docs/developer-tools/embedded-app-sdk)** - Get familiar with the Embedded App SDK
-- **[Activity Examples](https://github.com/discord/embedded-app-sdk-examples)** - Explore examples of Discord Activities
+- **[Embedded App SDK Docs](https://discord.com/developers/docs/developer-tools/embedded-app-sdk.md)** - Get familiar with the Embedded App SDK
+- **[Activity Examples](https://github.com/discord/embedded-app-sdk-examples.md)** - Explore examples of Discord Activities
 - **[Technical chat on Discord](https://discord.com/invite/discord-developers)** - Join us and other devs at DDevs at `#activities-dev-help`
 
 ## Installing this package
@@ -27,9 +27,9 @@ npm install @discord/embedded-app-sdk
 To use the SDK, import it into your project and construct a new instance of the DiscordSDK class.
 
 Below is a minimal example of setting up the SDK.
-Visit <https://github.com/discord/embedded-app-sdk-examples/tree/main/discord-activity-starter> for a complete example application. See more info on environment variables (`YOUR_OAUTH2_CLIENT_ID`, etc...) [here](https://discord.com/developers/docs/activities/building-an-activity#find-your-oauth2-credentials).
+[Visit](https://github.com/discord/embedded-app-sdk-examples/tree/main/discord-activity-starter) for a complete example application. See more info on environment variables (`YOUR_OAUTH2_CLIENT_ID`, etc...) [here](https://discord.com/developers/docs/activities/building-an-activity#find-your-oauth2-credentials).
 
-```typescript
+```index.es.js
 import {DiscordSDK} from '@discord/embedded-app-sdk';
 const discordSdk = new DiscordSDK(YOUR_OAUTH2_CLIENT_ID);
 
