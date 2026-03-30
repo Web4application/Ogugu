@@ -1,1 +1,36 @@
+---
+id: activities
+title: Discord Activities
+sidebar_label: Activities
+---
 
+# Discord Activities
+
+Welcome! Here’s a list of all interactive activities you can run in your Discord server.
+
+## Activities
+- [Game Activity](game-activity.mdx)
+- [Music Activity](music-activity.mdx)
+- [Watch Together Activity](watch-together.mdx)
+- [Study / Focus Activity](study-focus.mdx)
+- [Trivia / Quiz Activity](trivia-activity.mdx)
+- [Drawing / Art Activity](drawing-art.mdx)
+- [Voice Chat Games](voice-chat-games.mdx)
+- [Polls & Votes Activity](polls-votes.mdx)
+- [Coding / Dev Activity](coding-dev.mdx)
+- [Custom Bot Games](custom-bot-games.mdx)
+- [Podcast / Radio Activity](podcast-radio.mdx)
+
+[Go to Commands](../commands/index.mdx)
+
+Welcome! Navigate an activity to see setup instructions and examples.
+
+[Go to Game Activity](game-activity.md) | [Go to Music Activity](music-activity.md) | [Back to Commands](../commands/index.md)
+[← Previous Activity](trivia-activity.md) | [Next Activity →](drawing-art.md) | [Back to Activities](index.md)
+import { Link } from '@docusaurus/router';
+
+# Activities Overview
+```ini
+{['Game', 'Music', 'Watch Together', 'Study / Focus', 'Trivia', 'Drawing / Art', 'Voice Chat Games', 'Polls & Votes', 'Coding / Dev', 'Custom Bot Games', 'Podcast / Radio'].map((act, i) => (
+  <li key={i}><Link to={`./${act.toLowerCase().replace(/ /g, '-')}`}>{act} Activity</Link></li>
+))}
