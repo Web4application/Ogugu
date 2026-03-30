@@ -1,0 +1,33 @@
+
+---
+
+### **3. Podcast / Radio Activity – `activities/podcast-radio.mdx`**
+```mdx
+---
+id: podcast-radio
+title: Podcast / Radio Activity
+sidebar_label: Podcast / Radio
+---
+
+# Podcast / Radio Activity
+
+Host live audio streams, podcasts, or radio shows in a Discord voice channel.
+
+## Requirements
+- Bot with `CONNECT` and `SPEAK` permissions.
+- Node.js environment with `@discordjs/voice`.
+
+## Setup
+```js
+const { joinVoiceChannel, createAudioPlayer, createAudioResource } = require('@discordjs/voice');
+
+const connection = joinVoiceChannel({
+    channelId: 'VOICE_CHANNEL_ID',
+    guildId: 'GUILD_ID',
+    adapterCreator: guild.voiceAdapterCreator,
+});
+
+const player = createAudioPlayer();
+const resource = createAudioResource('https://example.com/stream.mp3');
+player.play(resource);
+connection.subscribe(player);
