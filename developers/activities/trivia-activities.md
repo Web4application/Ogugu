@@ -22,3 +22,23 @@ client.on('interactionCreate', async interaction => {
     await interaction.reply({ content: question.text, components: createAnswerButtons(question) });
   }
 });
+
+```
+#### `activities/watch-together.md`
+``
+# Watch Together Activity
+
+Let your users watch videos in a voice channel simultaneously.
+
+## Requirements
+- Bot with `applications.commands` scope.
+- Access to a voice channel.
+
+## Steps
+1. Launch the activity with the Discord Activity API.
+2. Provide an invite link to users.
+3. Users click join and start watching together.
+
+```js
+const invite = await channel.createInvite({ maxAge: 300 });
+console.log(`Join the activity: ${invite.url}`);
