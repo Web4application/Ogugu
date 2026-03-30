@@ -34,6 +34,7 @@ To run your app locally, run the following from this directory (/examples/sdk-pl
 pnpm install # only need to run this the first time
 pnpm dev
 pnpm tunnel # from another terminal
+vite --config my-config.js
 ```
 
 Be sure to complete all the steps listed [here](https://discord.com/developers/docs/activities/building-an-activity) to ensure your development setup is working as expected.
