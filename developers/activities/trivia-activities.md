@@ -24,6 +24,25 @@ client.on('interactionCreate', async interaction => {
 });
 
 ```
+
+---
+
+### **6. `activities/trivia-activity.md`**
+```md
+# Trivia / Quiz Activity
+
+Engage server members with quizzes and competitions.
+
+## Setup
+1. Add a `/trivia` command.
+2. Fetch questions from a database or API.
+3. Users answer via buttons or select menus.
+4. Track points and maintain a leaderboard.
+
+```js
+const question = getRandomQuestion();
+await interaction.reply({ content: question.text, components: createAnswerButtons(question) });
+```
 #### `activities/watch-together.md`
 ``
 # Watch Together Activity
