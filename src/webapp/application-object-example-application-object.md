@@ -5,7 +5,7 @@
 # Application Resource
 
 > Reference for Discord application objects and management endpoints.
-```rst
+```jsx
 export const Route = ({method, children}) => {
   return <div className="MDXRoute">
       <span className={"verb" + " " + method.toLowerCase()}>{method}</span>
@@ -16,8 +16,171 @@ export const Route = ({method, children}) => {
 export const ManualAnchor = ({id}) => {
   return <div className="MDXManualAnchor" id={id}></div>;
 };
+import { useState } from "react";
 
+export const Route = ({
+  method = "GET",
+  path,
+  auth = "None",
+  category,
+  description,
+  requestBody,
+  responseBody,
+  deprecated = false,
+  beta = false,
+}) => {
+  const normalizedMethod = String(method).toUpperCase();
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = async () => {
+    await navigator.clipboard.writeText(path);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 1500);
+  };
+
+  return (
+    <div className={`MDXRoute ${deprecated ? "deprecated" : ""}`}>
+      <div className="route-header">
+        <span className={`verb ${normalizedMethod.toLowerCase()}`}>
+          {normalizedMethod}
+        </span>
+
+        <code className="url">{path}</code>
+
+        {auth && <span className="badge auth">{auth}</span>}
+        {category && <span className="badge category">{category}</span>}
+        {beta && <span className="badge beta">Beta</span>}
+        {deprecated && <span className="badge deprecated">Deprecated</span>}
+
+        <button className="copy-btn" onClick={handleCopy}>
+          {copied ? "Copied" : "Copy"}
+        </button>
+      </div>
+
+      {description && <p className="route-description">{description}</p>}
+
+      {requestBody && (
+        <div className="route-block">
+          <h4>Request Body</h4>
+          <pre><code>{requestBody}</code></pre>
+        </div>
+      )}
+
+      {responseBody && (
+        <div className="route-block">
+          <h4>Response Body</h4>
+          <pre><code>{responseBody}</code></pre>
+        </div>
+      )}
+    </div>
+  );
+};
+```
 [Applications](/developers/quick-start/overview-of-apps) (or "apps") are containers for developer platform features, and can be installed to Discord servers and/or user accounts.
+```css
+.MDXRoute {
+  border: 1px solid #2a2d35;
+  border-radius: 12px;
+  padding: 16px;
+  margin: 16px 0;
+  background: #111317;
+}
+
+.route-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.verb {
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 13px;
+  color: white;
+  min-width: 72px;
+  text-align: center;
+}
+
+.verb.get {
+  background: #16a34a;
+}
+
+.verb.post {
+  background: #2563eb;
+}
+
+.verb.patch {
+  background: #f59e0b;
+}
+
+.verb.put {
+  background: #9333ea;
+}
+
+.verb.delete {
+  background: #dc2626;
+}
+
+.url {
+  font-family: monospace;
+  font-size: 15px;
+  color: #f3f4f6;
+}
+
+.badge {
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.badge.auth {
+  background: #1f2937;
+  color: #93c5fd;
+}
+
+.badge.category {
+  background: #1f2937;
+  color: #fca5a5;
+}
+
+.badge.beta {
+  background: #422006;
+  color: #facc15;
+}
+
+.badge.deprecated {
+  background: #450a0a;
+  color: #f87171;
+}
+
+.route-description {
+  margin-top: 12px;
+  color: #cbd5e1;
+  line-height: 1.6;
+}
+
+.copy-btn {
+  background: #1f2937;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.route-block {
+  margin-top: 16px;
+}
+
+.route-block pre {
+  background: #0b0d10;
+  padding: 12px;
+  border-radius: 8px;
+  overflow-x: auto;
+}
 ```
 ### Application Object
 
@@ -185,7 +348,58 @@ Status indicating whether event webhooks are enabled or disabled for an applicat
 | ----------- | ---------------- | ------------------------------------------------------------------------------------------------------------ |
 | scopes      | array of strings | [Scopes](/developers/topics/oauth2#shared-resources-oauth2-scopes) to add the application to the server with |
 | permissions | string           | [Permissions](/developers/topics/permissions) to request for the bot role                                    |
+```js
 
+import { useState } from "react";
+
+export const Route = ({
+  method = "GET",
+  path,
+  auth = "Bot Token",
+  category,
+  description,
+  deprecated = false,
+  beta = false,
+  rateLimit,
+}) => {
+  const normalizedMethod = String(method).toUpperCase();
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = async () => {
+    await navigator.clipboard.writeText(path);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 1500);
+  };
+
+  return (
+    <div className={`MDXRoute ${deprecated ? "deprecated" : ""}`}>
+      <div className="route-header">
+        <span className={`verb ${normalizedMethod.toLowerCase()}`}>
+          {normalizedMethod}
+        </span>
+
+        <code className="url">{path}</code>
+
+        {auth && <span className="badge auth">{auth}</span>}
+        {category && <span className="badge category">{category}</span>}
+        {beta && <span className="badge beta">Beta</span>}
+        {deprecated && <span className="badge deprecated">Deprecated</span>}
+
+        <button className="copy-btn" onClick={handleCopy}>
+          {copied ? "Copied" : "Copy"}
+        </button>
+      </div>
+
+      {(description || rateLimit) && (
+        <div className="route-meta">
+          {description && <p className="route-description">{description}</p>}
+          {rateLimit && <p className="route-rate-limit">Rate Limit: {rateLimit}</p>}
+        </div>
+      )}
+    </div>
+  );
+};
+```
 ## Installation Context
 
 An app's installation context defines how it's installed: to a server, to a user, or both.
@@ -203,6 +417,48 @@ During installation, server-installed apps are authorized with a specific set of
 Apps installed in a user context (user-installed apps) are visible *only* to the authorizing user, and therefore don't require any server-specific permissions.
 
 Apps that support the user installation context are visible across all of an authorizing user's servers, DMs, and GDMs, but are forced to respect the user's permissions in the surface where the app is being used. For example, if a user invokes a command for a user-installed app from a server's channel where they don't have permission to send messages, the app won't be able to [respond to an interaction](/developers/interactions/receiving-and-responding#interaction-response-object-interaction-callback-type) with a non-ephemeral message. Details about how the installation context of a command affects interactions is in the [interaction context](/developers/interactions/application-commands#interaction-contexts) documentation.
+# api/docs
+```js
+import { useState } from "react";
+
+export const Route = ({
+  method = "GET",
+  path,
+  auth = "Bot",
+  category,
+  description,
+}) => {
+  const normalizedMethod = String(method).toUpperCase();
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = async () => {
+    await navigator.clipboard.writeText(path);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 1500);
+  };
+
+  return (
+    <div className="MDXRoute">
+      <div className="route-header">
+        <span className={`verb ${normalizedMethod.toLowerCase()}`}>
+          {normalizedMethod}
+        </span>
+
+        <code className="url">{path}</code>
+
+        {auth && <span className="badge auth">{auth}</span>}
+        {category && <span className="badge category">{category}</span>}
+
+        <button className="copy-btn" onClick={handleCopy}>
+          {copied ? "Copied" : "Copy"}
+        </button>
+      </div>
+
+      {description && <p className="route-description">{description}</p>}
+    </div>
+  );
+};
+```
 
 ### Setting Supported Installation Contexts
 
@@ -214,6 +470,45 @@ You can update which installation contexts your app supports in your [app's sett
   If you update your app to support a new installation context, you will need to update your existing [commands](/developers/interactions/application-commands#contexts) if you want them to be supported in the new context. Details are in the [Application Command](/developers/interactions/application-commands#contexts) documentation.
 </Info>
 
+# developer portals
+```js
+export const Route = ({
+  method = "GET",
+  path,
+  auth = "Bot",
+  category,
+  description,
+  deprecated = false,
+  beta = false,
+  rateLimit,
+}) => {
+  const normalizedMethod = String(method).toUpperCase();
+
+  return (
+    <div className={`MDXRoute ${deprecated ? "deprecated" : ""}`}>
+      <div className="route-header">
+        <span className={`verb ${normalizedMethod.toLowerCase()}`}>
+          {normalizedMethod}
+        </span>
+
+        <code className="url">{path}</code>
+
+        {auth && <span className="badge auth">{auth}</span>}
+        {category && <span className="badge category">{category}</span>}
+        {beta && <span className="badge beta">Beta</span>}
+        {deprecated && <span className="badge deprecated">Deprecated</span>}
+      </div>
+
+      {(description || rateLimit) && (
+        <div className="route-meta">
+          {description && <p className="route-description">{description}</p>}
+          {rateLimit && <p className="route-rate-limit">Rate Limit: {rateLimit}</p>}
+        </div>
+      )}
+    </div>
+  );
+};
+```
 ## Install Links
 
 Install links provide an easy way for users to install your app in Discord. If you have an install link configured, an "Add App" button will appear in your app's profile and App Directory page which will guide the user through your app's installation flow.
@@ -231,6 +526,36 @@ There are three options when configuring an install link for your app: "Discord 
 The default Discord Provided Link is a short link that guides users through the installation flow with your app's [configured installation contexts](/developers/resources/application#setting-supported-installation-contexts). If your app has both **User Install** and **Guild Install** enabled, the user can choose which way to install your app.
 
 Discord Provided Links don't have scopes or bot user permissions defined in the URL. For example:
+```js
+export const Route = ({
+  method = "GET",
+  children,
+  auth = "Bot",
+  category,
+  description
+}) => {
+  const normalizedMethod = String(method).toUpperCase();
+
+  return (
+    <div className="MDXRoute">
+      <div className="route-top">
+        <span className={`verb ${normalizedMethod.toLowerCase()}`}>
+          {normalizedMethod}
+        </span>
+
+        <span className="url">{children}</span>
+
+        {auth && <span className="auth-badge">{auth}</span>}
+        {category && <span className="category-badge">{category}</span>}
+      </div>
+
+      {description && <p className="route-description">{description}</p>}
+    </div>
+  );
+};
+
+
+```
 
 ```ini
 https://discord.com/oauth2/authorize?client_id=1234567895647001626
