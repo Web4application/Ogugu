@@ -1,4 +1,4 @@
-/**
+/** 
  * @jest-environment jsdom
  */
 import {Opcodes} from '../Discord';
@@ -81,7 +81,7 @@ describe('DiscordSDK', () => {
             nonce: null,
           },
         ],
-        origin: 'https://discord.com',
+        origin: 'https://discord.dev',
       }),
     );
 
