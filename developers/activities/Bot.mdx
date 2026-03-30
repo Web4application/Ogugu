@@ -1,0 +1,46 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.discord.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Discord Bots & Companion Apps
+
+> Start building bots and companion apps for Discord.
+
+export const RobotIcon = props => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"><path fill="currentColor" d="M7.89 13.46a1 1 0 0 1-1.78-.9L7 13l-.9-.45.01-.01.01-.02a2.42 2.42 0 0 1 .14-.23c.1-.14.23-.31.4-.5.37-.36.98-.79 1.84-.79.86 0 1.47.43 1.83.8a3.28 3.28 0 0 1 .55.72v.02h.01v.01L10 13l.9-.45a1 1 0 0 1-1.79.9 1.28 1.28 0 0 0-.19-.25c-.14-.13-.28-.2-.42-.2-.14 0-.28.07-.42.2a1.28 1.28 0 0 0-.19.25ZM13.55 13.9a1 1 0 0 0 1.34-.44c0-.02.02-.04.04-.06.03-.05.08-.13.15-.2.14-.13.28-.2.42-.2.14 0 .28.07.42.2a1.28 1.28 0 0 1 .19.25 1 1 0 0 0 1.78-.9L17 13l.9-.45-.01-.01-.01-.02a2.26 2.26 0 0 0-.14-.23 3.28 3.28 0 0 0-.4-.5c-.37-.36-.98-.79-1.84-.79-.86 0-1.47.43-1.83.8a3.28 3.28 0 0 0-.55.72v.02h-.01v.01L14 13l-.9-.45a1 1 0 0 0 .45 1.34Z" /><path fill="currentColor" fill-rule="evenodd" d="M12 21c5.52 0 10-1.86 10-6 0-5.59-2.8-10.07-4.26-11.67a1 1 0 1 0-1.48 1.34 14.8 14.8 0 0 1 2.35 3.86A10.23 10.23 0 0 0 12 6C9.47 6 7.15 7.02 5.4 8.53a14.8 14.8 0 0 1 2.34-3.86 1 1 0 1 0-1.48-1.34A18.65 18.65 0 0 0 2 15c0 4.14 4.48 6 10 6Zm0-12c3.87 0 7 2 7 4.2S15.87 17 12 17s-7-1.6-7-3.8C5 11 8.13 9 12 9Z" clip-rule="evenodd" /></svg>;
+
+export const WrenchIcon = props => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"><path fill="currentColor" d="M7.8 15.77c.7.43 1.2 1.14 1.2 1.96V21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-3.27c0-.82.5-1.53 1.2-1.96a8.06 8.06 0 0 0 .12-13.63c-.6-.39-1.32.09-1.32.8v5.98a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1V2.94c0-.71-.72-1.19-1.32-.8a8.06 8.06 0 0 0 .12 13.63Z" /></svg>;
+
+<img src="https://mintcdn.com/discord/KbTJiI51tEBr5wj-/images/headers/docs-botsapp-hero.png?fit=max&auto=format&n=KbTJiI51tEBr5wj-&q=85&s=4f01a5c758f18470eaeed3d9cb5335d4" alt="Discord Bots & Companion Apps Hero Image" style={{width: "100%", height: "auto"}} noZoom width="1336" height="540" data-path="images/headers/docs-botsapp-hero.png" />
+
+Bots are applications that connect to Discord using the Discord API. They appear in servers as users with an `APP` tag and can interact with members, respond to events, and perform actions programmatically. For a deeper look at what bots can do and when to use one, see the [Bots & Companion Apps](/developers/platform/bots) platform page.
+
+## Getting Started
+
+To build a bot, you'll need to:
+
+* **Create an application** in the Discord Developer Portal. This is where your bot token, OAuth2 credentials, and configuration live.
+* **Add a bot user** to your application from the Bot tab. This generates the token your code uses to authenticate.
+* **Invite the bot** to a server using an OAuth2 URL with the bot scope and the permissions your bot requires.
+* **Connect to the API** using the Gateway for real-time events, the HTTP API for REST operations, or both.
+
+Most developers use a community-maintained library in their language of choice rather than interfacing with the API directly. Official and community libraries are listed in the [Community Resources](/developers/developer-tools/community-resources) page.
+
+If you're ready to dive in, the [Getting Started guide](/developers/quick-start/getting-started) walks through building and running your first bot end to end.
+
+## Building Your Bot
+
+* **[Interactions](/developers/interactions/overview)** — Slash commands, context menu commands, buttons, select menus, and modals that let users interact with your bot.
+* **[Components](/developers/components/overview)** — Layout, content, and interactive UI elements you can attach to messages and modals.
+* **[Monetization](/developers/monetization/overview)** — Add subscriptions and one-time purchases to your bot using Discord's built-in payment flow.
+* **[Discovery](/developers/discovery/overview)** — Get your app listed in the App Directory and App Launcher so users can find and install it.
+* **[Guides & Tutorials](/developers/guides/bots)** — Practical guides on implementing common bot features and best practices.
+
+<CardGroup cols={2}>
+  <Card title="Build Your First App" href="/developers/quick-start/getting-started" icon={<WrenchIcon />}>
+    Step-by-step guide to building and running your first Discord bot.
+  </Card>
+
+  <Card title="Bot Development Guides" href="/developers/guides/bots" icon={<RobotIcon />}>
+    Explore guides on implementing common bot features and best practices.
+  </Card>
+</CardGroup>
