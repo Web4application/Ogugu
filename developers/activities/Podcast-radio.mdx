@@ -11,8 +11,15 @@ Host live podcasts, radio shows, or music streams in a Discord voice channel.
 1. Connect your bot to a voice channel:
 ```js
 const { joinVoiceChannel } = require('@discordjs/voice');
+require('@discordjs/playpodcast');
+require('@discordjs/startradio');
 const connection = joinVoiceChannel({
     channelId: 'VOICE_CHANNEL_ID',
     guildId: 'GUILD_ID',
     adapterCreator: guild.voiceAdapterCreator,
 });
+const { createAudioPlayer, createAudioResource, AudioPlayerStatus } = require('@discordjs/voice');
+const player = createAudioPlayer();
+const resource = createAudioResource('https://example.com/stream.mp3');
+player.play(resource);
+connection.subscribe(player);
