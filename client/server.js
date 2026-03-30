@@ -18,9 +18,9 @@ app.get("/invite/:slug", (req, res) => {
       iconUrl: "https://cdn.discordapp.com/embed/avatars/0.png"
     },
     qubuhub: {
-      serverName: "QUBUHUB",
-      description: "AI + Web3 + builders community",
-      inviteUrl: "https://discord.com/invite/yourcode",
+      serverName: "web4app",
+      description: "AI + web4 + builders community",
+      inviteUrl: "https://discord.com/invite/qzKvJpweA4",
       memberCount: 210,
       iconUrl: "https://cdn.discordapp.com/embed/avatars/1.png"
     }
