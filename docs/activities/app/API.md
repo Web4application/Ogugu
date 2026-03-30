@@ -5,7 +5,7 @@
 # API Reference
 
 > The Discord API is a REST API that allows you to interact with Discord data from your own applications. It's the primary way to interact with Discord from your own code.
-```ts
+```mdx
 export const Snowflake = () => {
   return <div className="MDXSnowflake">
       <svg width="633" height="355" viewBox="0 0 633 355" fill="none" xmlns="http://www.w3.org/2000/svg">
